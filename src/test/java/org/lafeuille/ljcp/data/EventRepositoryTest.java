@@ -3,6 +3,7 @@ package org.lafeuille.ljcp.data;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import reactor.core.publisher.Flux;
@@ -30,27 +31,27 @@ class EventRepositoryTest {
                         .collectList())
                 .blockLast(Duration.ofSeconds(1));
 
-        repository.findBy(Pageable.ofSize(5))
+        repository.findBy(PageRequest.of(1, 5))
                 .as(StepVerifier::create)
                 .assertNext(event -> {
                     assertThat(event.id()).isNotNull();
-                    assertThat(event.title()).isEqualTo("Event0");
+                    assertThat(event.title()).isEqualTo("Event5");
                 })
                 .assertNext(event -> {
                     assertThat(event.id()).isNotNull();
-                    assertThat(event.title()).isEqualTo("Event1");
+                    assertThat(event.title()).isEqualTo("Event6");
                 })
                 .assertNext(event -> {
                     assertThat(event.id()).isNotNull();
-                    assertThat(event.title()).isEqualTo("Event2");
+                    assertThat(event.title()).isEqualTo("Event7");
                 })
                 .assertNext(event -> {
                     assertThat(event.id()).isNotNull();
-                    assertThat(event.title()).isEqualTo("Event3");
+                    assertThat(event.title()).isEqualTo("Event8");
                 })
                 .assertNext(event -> {
                     assertThat(event.id()).isNotNull();
-                    assertThat(event.title()).isEqualTo("Event4");
+                    assertThat(event.title()).isEqualTo("Event9");
                 })
                 .verifyComplete();
     }
