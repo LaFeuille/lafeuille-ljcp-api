@@ -1,9 +1,9 @@
 package org.lafeuille.ljcp.domain;
 
-public interface EventConstants {
+public interface PersonConstants {
 
     interface Sizes {
 
-        int TITLE = 256;
+        int NAME = 256;
     }
 }

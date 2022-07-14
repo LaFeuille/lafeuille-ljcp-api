@@ -7,10 +7,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.UUID;
 
-import static org.lafeuille.ljcp.domain.EventConstants.Sizes.TITLE;
+import static org.lafeuille.ljcp.domain.PersonConstants.Sizes.NAME;
 
 @Document
-public record Event(
+public record Person(
         @MongoId UUID id,
-        @NotBlank @Size(max = TITLE) String title) {
+        @NotBlank @Size(max = NAME) String name) {
 }
